@@ -1,0 +1,75 @@
+%global srcname colorclass
+%global sum Yet another ANSI color text library for Python
+
+Name:           python-%{srcname}
+Version:        1.2.0
+Release:        3%{?dist}
+Summary:        Yet another ANSI color text library for Python
+
+License:        MIT
+URL:            http://pypi.python.org/pypi/%{srcname}
+Source0:        http://pypi.python.org/packages/source/c/%{srcname}/%{srcname}-%{version}.tar.gz
+Source1:        https://github.com/Robpol86/colorclass/blob/master/LICENSE
+
+BuildArch:      noarch
+BuildRequires:  python2-devel python3-devel
+
+%description
+Colorful worry-free console applications for Linux, Mac OS X, and Windows.
+Yet another ANSI color text library for Python. Provides "auto colors" for
+dark/light terminals. Works on Linux, OS X, and Windows.
+
+%package -n python2-%{srcname}
+Summary:        Yet another ANSI color text library for Python
+%{?python_provide:%python_provide python2-%{srcname}}
+
+%description -n python2-%{srcname}
+Colorful worry-free console applications for Linux, Mac OS X, and Windows.
+Yet another ANSI color text library for Python. Provides "auto colors" for
+dark/light terminals. Works on Linux, OS X, and Windows.
+
+
+%package -n python3-%{srcname}
+Summary:        Yet another ANSI color text library for Python
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description -n python3-%{srcname}
+Colorful worry-free console applications for Linux, Mac OS X, and Windows.
+Yet another ANSI color text library for Python. Provides "auto colors" for
+dark/light terminals. Works on Linux, OS X, and Windows.
+
+%prep
+%autosetup -n %{srcname}-%{version}
+cp %{SOURCE1} .
+rm -rf colorclass.egg-info
+
+%build
+%py2_build
+%py3_build
+
+%install
+%py2_install
+%py3_install
+
+%check
+
+%files -n python2-%{srcname}
+%license LICENSE
+%doc README.rst
+%{python2_sitelib}/*
+
+%files -n python3-%{srcname}
+%license LICENSE
+%doc README.rst
+%{python3_sitelib}/colorclass*
+%{python3_sitelib}/__pycache__/colorclass.*
+
+%changelog
+* Fri Sep 11 2015 René Ribaud <rene.ribaud@free.fr> - 1.2.0-3
+- Include changes from Julien's review #2 (Bugzilla #1258405)
+
+* Tue Sep 08 2015 René Ribaud <rene.ribaud@free.fr> - 1.2.0-2
+- Include changes from Julien's review (Bugzilla #1258405)
+
+* Mon Aug 31 2015 René Ribaud <rene.ribaud@free.fr> - 1.2.0-1
+- Initial rpm
