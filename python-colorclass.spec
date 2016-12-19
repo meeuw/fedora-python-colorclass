@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        1.2.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Yet another ANSI color text library for Python
 
 License:        MIT
@@ -65,6 +65,9 @@ rm -rf colorclass.egg-info
 %{python3_sitelib}/__pycache__/colorclass.*
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.2.0-7
+- Rebuild for Python 3.6
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.0-6
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
