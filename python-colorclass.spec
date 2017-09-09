@@ -12,7 +12,6 @@ Source0:        http://pypi.python.org/packages/source/c/%{srcname}/%{srcname}-%
 Source1:        https://github.com/Robpol86/colorclass/blob/master/LICENSE
 
 BuildArch:      noarch
-BuildRequires:  python2-devel python3-devel
 
 %description
 Colorful worry-free console applications for Linux, Mac OS X, and Windows.
@@ -21,6 +20,7 @@ dark/light terminals. Works on Linux, OS X, and Windows.
 
 %package -n python2-%{srcname}
 Summary:        Yet another ANSI color text library for Python
+BuildRequires:  python2-devel
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
@@ -31,6 +31,8 @@ dark/light terminals. Works on Linux, OS X, and Windows.
 
 %package -n python3-%{srcname}
 Summary:        Yet another ANSI color text library for Python
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
